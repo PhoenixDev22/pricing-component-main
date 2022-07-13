@@ -146,6 +146,7 @@ input[type="range"]{
     cursor: grabbing;
     width: 80%;
     max-width: 16.25rem;
+    height:0.4375rem;
     background:  map-get($colors,  "Light-Grayish-Blue");
     background-image: linear-gradient(map-get($colors,"Soft-Cyan"), map-get($colors, "Soft-Cyan"));
     background-size: 50% 100%;

@@ -462,6 +462,7 @@
     cursor: grabbing;
     width: 80%;
     max-width: 16.25rem;
+    height:0.4375rem;
     background: hsl(223deg, 50%, 87%);
     background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(174deg, 77%, 80%)), to(hsl(174deg, 77%, 80%)));
     background-image: -o-linear-gradient(hsl(174deg, 77%, 80%), hsl(174deg, 77%, 80%));
