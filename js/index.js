@@ -21,13 +21,11 @@ const billAmountMonthlyArray = [
 switchBtn.addEventListener("click", () =>{
     let amount = billAmountMonthlyArray[rangeInput.value][0]
     if(!switchBtncCircle.classList.contains("transfrom")){
-        rangeInput.name = `${rangeInput.name.replace("monthly", "yearly")}`
         way.textContent = `yearly`
         switchBtncCircle.classList.add("transfrom")
         switchInput.value = `yearly`
         billAmount.textContent = `$${(amount - amount * discount).toFixed(2)}`
     }else{
-        rangeInput.name = `${rangeInput.name.replace("yearly", "monthly")}`
         switchBtncCircle.classList.remove("transfrom")
         way.textContent = `monthly`
         switchInput.value = `monthly`
