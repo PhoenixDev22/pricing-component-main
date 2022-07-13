@@ -1,0 +1,365 @@
+@use 'resets';
+$colors : (
+    "Soft-Cyan": hsl(174, 77%, 80%),
+    "Strong-Cyan": hsl(174, 86%, 45%),
+    "Light-Grayish-Red": hsl(14, 92%, 95%),
+    "Light-Red": hsl(15, 100%, 70%),
+    "Pale-Blue": hsl(226, 100%, 87%),
+    "White": hsl(0, 0%, 100%),
+    "Very-Pale-Blue": hsl(230, 100%, 99%),
+    "Light-blue" : hsl(224, 65%, 95%),
+    "Light-Grayish-Blue" : hsl(223, 50%, 87%),
+    "Grayish-Blue" : hsl(225, 20%, 60%),
+    "Dark-Desaturated-Blue": hsl(227, 35%, 25%),
+);
+
+$font-weights:(
+    "regular": 600,
+    "bold": 800,
+);
+
+
+
+@mixin outline {
+    outline: .35em dashed map-get($colors, "Strong-Cyan");
+    outline-offset: .2em;
+};
+/** 
+*Global  rules
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:focus{
+    outline: none;
+}
+ul{
+    list-style: none;
+}
+button, input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important; 
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;           
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1.5625rem;
+    background-image: url(../images/bg-pattern.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 56%;
+    background-color: map-get($colors,"Very-Pale-Blue");
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+}
+.component{
+    color: map-get($colors, "Grayish-Blue");
+}
+
+.component__header{
+    position: relative;
+    background-image: url(../images/pattern-circles.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 4.0625rem 0 2.5rem;
+    margin-bottom: 1.5625rem;
+}
+.title{
+    color: map-get($colors,"Dark-Desaturated-Blue");
+    font-size: 1.25rem;
+    margin-bottom: 1rem
+}
+.description{
+    font-size: 0.9375rem;
+    font-weight: map-get($font-weights, regular);
+    line-height: 1.7;
+    max-width: 12.5rem;
+    margin: 0 auto;
+}
+.component__form{
+    background-color: map-get($colors,"White");
+    border-radius: 1rem;
+    padding: 2.1875rem 0;
+    box-shadow: 0px 3px 20px 0 hsl(227, 35%, 25%, .1);
+    max-width: 20.625rem
+}
+.up__component{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, minmax(1fr, 3.4375rem)) minmax(1fr, 5rem);
+}
+.pageviews-text{
+    letter-spacing: 0.125em;
+    font-weight: map-get($font-weights, bold);
+    text-transform: uppercase;
+    font-size: .8125rem;
+    margin-bottom: 2.5rem;
+    grid-column: 1/3;
+}
+.bill{
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1/3;
+
+    &-amount{
+        font-size: 2rem;
+        color:  map-get($colors,"Dark-Desaturated-Blue");
+        font-weight: map-get($font-weights, "bold");
+        margin-right: .5rem;
+    }
+
+    &-text{
+        font-size: .875rem;
+    }
+}
+
+label{
+    grid-column: 1/ span 2 ;  
+}
+
+input[type="range"]{
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: grabbing;
+    width: 80%;
+    max-width: 16.25rem;
+    background:  map-get($colors,  "Light-Grayish-Blue");
+    background-image: linear-gradient(map-get($colors,"Soft-Cyan"), map-get($colors, "Soft-Cyan"));
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    border-radius: 0.3125rem;
+    margin-bottom: 2.5rem;
+    
+}
+input[type="range"]:focus-visible::-webkit-slider-thumb{
+    @include outline;
+}
+input[type="range"]:focus-visible::-moz-range-thumb{
+    @include outline;
+}
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -0.9375rem; 
+    background-color: map-get($colors,"Strong-Cyan");
+    height: 2.5rem;
+    width: 2.5rem;   
+    border-radius: 50%; 
+    background-image: url(../images/icon-slider.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px 0 map-get($colors,"Strong-Cyan");
+    transition: .4s ease-in-out;
+    &:hover{
+        background-color: darken(map-get($colors,"Soft-Cyan"), 40%);
+    }
+  
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    border-radius: .625rem;
+    height: 0.4375rem;
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    height: 0.4375rem;
+}
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    background-color: map-get($colors, "Strong-Cyan");
+    height: 2.5rem;
+    width: 2.5rem;   
+    border-radius: 50%; 
+    background-image: url(../images/icon-slider.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px 0 map-get($colors, "Strong-Cyan");
+}
+
+.btn-component{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2.1875rem;
+    padding: 0 1.5625rem;
+}
+input[type="text"]{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.switch__btn{
+    background-color: map-get($colors, "Light-Grayish-Blue");
+    width: 2.625rem;
+    height: 1.375rem;
+    margin: 0 1rem;
+    position: relative;
+    border-radius: 1.25rem;
+    z-index: 10;
+    transition: .4s ease-in-out;
+    &:hover{
+        background-color: map-get($colors, "Strong-Cyan");
+    }
+    &:focus-visible{
+        @include outline;
+    }
+    &_circle{
+        position: absolute;
+        top: .25rem;
+        left: .25rem;
+        background-color: map-get($colors, "White");
+        width: 0.875rem;
+        height: 0.875rem;
+        border-radius: 50%;
+        z-index: 2;
+        transition: .4s ease-in-out;
+    }
+    &_circle.transfrom{
+        transform: translateX(calc(100% + .25rem));
+    }
+    &_text{
+        font-size: .75rem;
+    }
+   
+}
+.discount{
+    font-size: .6rem;
+    background-color: map-get($colors, "Light-Grayish-Red");
+    color: map-get($colors, "Light-Red");
+    border-radius: 1.25rem;
+    padding: .15rem .4rem;
+    margin-left: .5rem;
+}
+.discount-mobile{
+    display: inline-block;
+}
+.discount-desktop{
+    display: none;
+}
+.lp-component{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 1px solid map-get($colors, "Light-Grayish-Blue");
+}
+.features{
+    padding: 1.563rem 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.list-item{
+    font-size: .75rem;
+    position: relative;
+}
+.list-item:not(:last-child){
+    margin-bottom: 1rem;
+}
+.list-item::before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    left: -1.2rem;
+    transform: translateY(-50%);
+    background-image: url(../images/icon-check.svg);
+    background-repeat: no-repeat;
+    width: .563rem;
+    height: .5rem;
+}
+.submit-btn{
+    padding: .875rem 2.5rem;
+    font-size: .875rem;
+    color: map-get($colors, "White");
+    background-color: map-get($colors, "Dark-Desaturated-Blue");
+    border-radius: 3.125rem;
+    white-space: nowrap;
+    transition: .35s ease-in-out;
+    &:hover{
+        opacity: .9
+    }
+    &:focus-visible{
+        @include outline;
+    }
+}
+@media screen and (min-width: 62em) {
+
+    .component__form{
+        max-width: 540px;
+    }
+    .up__component{
+        grid-template-rows: repeat(2, minmax(5rem , 1fr));
+        align-items: center;
+        padding: 0 3.125rem;
+    }
+    .btn-component{
+        justify-content: flex-end;
+    }
+    .switch__btn_text{
+        &:last-child{
+            margin-right: 1.2rem;
+        }
+    }
+    .pageviews-text{
+        grid-column: 1/2;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: flex-start;
+    }
+    input[type=range] {
+        width: 100%;
+        max-width: 28.125rem;
+    }
+    .btn-component{
+        padding: 0 3.125rem;
+    }
+    .discount-mobile{
+        display: none;
+    }
+    .discount-desktop{
+        display: inline-block;
+    }
+    .bill{
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin-bottom: 0;
+        justify-content: flex-end;
+    }
+    .lp-component{
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 9.375rem;
+        padding: 0 3.125rem;
+    }
+    .features{
+        align-items: flex-start;
+        padding: 1.5rem  0;
+    }
+}

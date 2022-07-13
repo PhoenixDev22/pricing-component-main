@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="description" content=" Interactive pricing component: Simple, traffic-based pricing">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <title>Frontend Mentor | Interactive pricing component</title>
+  <script src="js/index.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1 class="sr-only">Interactive pricing component</h1>
+    <div class="component">
+      <div class="component__header">
+        <h2 class="title">Simple, traffic-based pricing</h2>
+        <p class="description">Sign-up for our 30-day trial. No credit card required. </p>
+      </div>
+
+      <div class="component__form">
+        <form id="form" class="form" novalidate>
+          <!-- upper part of the component -->
+          <div class="up__component">
+            <p class="pageviews-text">
+              <output id="pageviewsNumber" class="pageviews-number" aria-live="polite">
+                100k 
+              </output>
+              Pageviews
+            </p>
+  
+            <label class="label" for="monthlyRange">
+              <span class="sr-only">Choose You right <span id="way">monthly</span> billing</span>
+              <input id="range" class="range" type="range" name="monthly_billing" min="0" max="4" step="1">
+            </label>
+
+  
+            <p class="bill">
+              <output id="billAmount" class="bill-amount" aria-live="polite">$16.00</output>
+              <span class="bill-text">/month</span>
+            </p>
+  
+
+
+          </div>
+          <div class="btn-component">
+            <p class="switch__btn_text">Monthly Billing</p>
+            <div id="switchBtn" class="switch__btn" >
+              <span class="switch__btn_circle"></span>
+              <label for="switch" class="sr-only">
+                toggle the billing
+              </label>
+              <input id="switch" type="text" name="billing" value="monthly">
+              
+            </div>
+            <p class="switch__btn_text">
+              Yearly Billing 
+              <span class="discount discount-mobile">-25%</span>
+              <span class="discount discount-desktop">25% discount</span>
+            </p>
+          </div>
+          <!-- Lower part of the component -->
+          <div class="lp-component">
+
+            <ul class="features">
+              <li class="list-item">Unlimited websites</li>
+              <li class="list-item">100% data ownership</li>
+              <li class="list-item">Email reports</li>
+            </ul>
+  
+            <button id="submitBtn" class="submit-btn" type="submit">Start my trial</button>
+          </div>
+
+        </form>
+       
+      </div>
+    </div>
+  </main>
+</body>
+</html>
