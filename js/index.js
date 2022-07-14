@@ -3,8 +3,9 @@ const switchBtncCircle = document.querySelector(".switch__btn_circle")
 const rangeInput = document.querySelector(".range")
 const billAmount = document.getElementById("billAmount")
 const pageviewsNumber = document.getElementById("pageviewsNumber")
+const yearlyRadio = document.getElementById("yearly")
+const monthlyRadio = document.getElementById("monthly")
 const way = document.getElementById("way")
-const switchInput = document.getElementById("switch")
 const form = document.getElementById("form")
 const discount = .25
 const billAmountMonthlyArray = [
@@ -21,14 +22,16 @@ const billAmountMonthlyArray = [
 switchBtn.addEventListener("click", () =>{
     let amount = billAmountMonthlyArray[rangeInput.value][0]
     if(!switchBtncCircle.classList.contains("transfrom")){
-        way.textContent = `yearly`
         switchBtncCircle.classList.add("transfrom")
-        switchInput.value = `yearly`
+        yearlyRadio.checked = true
+        monthlyRadio.checked = false
+        way.textContent = "yearly"
         billAmount.textContent = `$${(amount - amount * discount).toFixed(2)}`
     }else{
         switchBtncCircle.classList.remove("transfrom")
-        way.textContent = `monthly`
-        switchInput.value = `monthly`
+        yearlyRadio.checked = false
+        monthlyRadio.checked = true
+        way.textContent = "monthly"
         billAmount.textContent = `$${amount}.00` 
     } 
     fillLower(rangeInput.value)  
@@ -36,8 +39,7 @@ switchBtn.addEventListener("click", () =>{
 
 rangeInput.addEventListener("input", (e) => {
     handleInputValue(e)  
-    fillLower(e.target.value)  
-  
+    fillLower(e.target.value)   
 })
 
 function handleInputValue(e){

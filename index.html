@@ -28,8 +28,8 @@
         <form id="form" class="form" novalidate>
           <!-- upper part of the component -->
           <div class="up__component">
-            <p class="pageviews-text">
-              <output id="pageviewsNumber" class="pageviews-number" aria-live="polite">
+            <p class="pageviews-text"  aria-live="polite">
+              <output id="pageviewsNumber" class="pageviews-number">
                 100k 
               </output>
               Pageviews
@@ -37,7 +37,7 @@
   
             <label class="label" for="monthlyRange">
               <span class="sr-only">Choose You right <span id="way">monthly</span> billing</span>
-              <input id="range" class="range" type="range" name="price" min="0" max="4" step="1">
+              <input id="range" class="range" type="range" name="price_type_number" min="0" max="4" step="1">
             </label>
 
   
@@ -50,20 +50,18 @@
 
           </div>
           <div class="btn-component">
-            <p class="switch__btn_text">Monthly Billing</p>
-            <div id="switchBtn" class="switch__btn" >
+            <label for="monthly" class="switch__btn_text">Monthly Billing</label>
+            <div id="switchBtn" class="switch__btn" role="radiogroup" tabindex="0">
               <span class="switch__btn_circle"></span>
-              <label for="switch" class="sr-only">
-                toggle the billing
-              </label>
-              <input id="switch" type="text" name="billing" value="monthly">
-              
+              <p for="switch" class="sr-only">toggle the billing</p>
+              <input id="monthly" type="radio" name="billing" value="monthly" checked>
+              <input id="yearly" type="radio" name="billing" value="yearly">
             </div>
-            <p class="switch__btn_text">
+            <label for="yearly" class="switch__btn_text">
               Yearly Billing 
               <span class="discount discount-mobile">-25%</span>
               <span class="discount discount-desktop">25% discount</span>
-            </p>
+            </label>
           </div>
           <!-- Lower part of the component -->
           <div class="lp-component">
