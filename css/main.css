@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -42,7 +42,8 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box; /* 1 */
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
@@ -72,7 +73,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -210,7 +212,8 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  box-sizing: border-box; /* 1 */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
   max-width: 100%; /* 1 */
@@ -238,7 +241,8 @@ textarea {
  */
 [type=checkbox],
 [type=radio] {
-  box-sizing: border-box; /* 1 */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
 
@@ -313,7 +317,8 @@ template {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 ul {
@@ -344,10 +349,19 @@ button, input {
 body {
   width: 100%;
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 1.5625rem;
   background-image: url(../images/bg-pattern.svg);
   background-repeat: no-repeat;
@@ -388,7 +402,8 @@ body {
   background-color: hsl(0deg, 0%, 100%);
   border-radius: 1rem;
   padding: 2.1875rem 0;
-  box-shadow: 0px 3px 20px 0 hsla(227deg, 35%, 25%, 0.1);
+  -webkit-box-shadow: 0px 3px 20px 0 hsla(227deg, 35%, 25%, 0.1);
+          box-shadow: 0px 3px 20px 0 hsla(227deg, 35%, 25%, 0.1);
   max-width: 20.625rem;
 }
 
@@ -409,9 +424,15 @@ body {
 
 .bill {
   margin-bottom: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   grid-column: 1/3;
 }
 .bill-amount {
@@ -430,13 +451,17 @@ label {
 
 input[type=range] {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   background: transparent;
+  cursor: -webkit-grabbing;
   cursor: grabbing;
   width: 80%;
   max-width: 16.25rem;
   height: 0.4375rem;
   background: hsl(223deg, 50%, 87%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(174deg, 77%, 80%)), to(hsl(174deg, 77%, 80%)));
+  background-image: -o-linear-gradient(hsl(174deg, 77%, 80%), hsl(174deg, 77%, 80%));
   background-image: linear-gradient(hsl(174deg, 77%, 80%), hsl(174deg, 77%, 80%));
   background-size: 50% 100%;
   background-repeat: no-repeat;
@@ -466,7 +491,9 @@ input[type=range]::-webkit-slider-thumb {
   background-image: url(../images/icon-slider.svg);
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 10px 20px 0 hsl(174deg, 86%, 45%);
+  -webkit-box-shadow: 0 10px 20px 0 hsl(174deg, 86%, 45%);
+          box-shadow: 0 10px 20px 0 hsl(174deg, 86%, 45%);
+  -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
 input[type=range]::-webkit-slider-thumb:hover {
@@ -496,9 +523,15 @@ input[type=range]::-moz-range-thumb {
 }
 
 .btn-component {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
   margin-bottom: 2.1875rem;
   padding: 0 1.5625rem;
@@ -508,6 +541,8 @@ input[type=radio] {
   width: 2.625rem;
   height: 1.375rem;
   opacity: 0;
+  position: absolute;
+  left: 0;
 }
 
 .switch__btn {
@@ -518,6 +553,8 @@ input[type=radio] {
   position: relative;
   border-radius: 1.25rem;
   z-index: 10;
+  -webkit-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
 .switch__btn:hover {
@@ -532,10 +569,14 @@ input[type=radio] {
   height: 0.875rem;
   border-radius: 50%;
   z-index: 2;
+  -webkit-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
 .switch__btn_circle.transfrom {
-  transform: translateX(calc(100% + 0.25rem));
+  -webkit-transform: translateX(calc(100% + 0.25rem));
+      -ms-transform: translateX(calc(100% + 0.25rem));
+          transform: translateX(calc(100% + 0.25rem));
 }
 .switch__btn_text {
   font-size: 0.75rem;
@@ -564,20 +605,38 @@ input[type=radio] {
 }
 
 .lp-component {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-top: 1px solid hsl(223deg, 50%, 87%);
 }
 
 .features {
   padding: 1.563rem 0;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .list-item {
@@ -594,7 +653,9 @@ input[type=radio] {
   position: absolute;
   top: 50%;
   left: -1.2rem;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   background-image: url(../images/icon-check.svg);
   background-repeat: no-repeat;
   width: 0.563rem;
@@ -608,6 +669,8 @@ input[type=radio] {
   background-color: hsl(227deg, 35%, 25%);
   border-radius: 3.125rem;
   white-space: nowrap;
+  -webkit-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
 }
 .submit-btn:hover {
@@ -624,11 +687,15 @@ input[type=radio] {
   }
   .up__component {
     grid-template-rows: repeat(2, minmax(5rem, 1fr));
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0 3.125rem;
   }
   .btn-component {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   .switch__btn_text:last-child {
     margin-right: 1.2rem;
@@ -636,8 +703,12 @@ input[type=radio] {
   .pageviews-text {
     grid-column: 1/2;
     margin-bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   input[type=range] {
     width: 100%;
@@ -656,16 +727,25 @@ input[type=radio] {
     grid-column: 2/3;
     grid-row: 1/2;
     margin-bottom: 0;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   .lp-component {
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     gap: 9.375rem;
     padding: 0 3.125rem;
   }
   .features {
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     padding: 1.5rem 0;
   }
 }

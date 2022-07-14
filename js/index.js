@@ -6,7 +6,6 @@ const pageviewsNumber = document.getElementById("pageviewsNumber")
 const yearlyRadio = document.getElementById("yearly")
 const monthlyRadio = document.getElementById("monthly")
 const way = document.getElementById("way")
-const form = document.getElementById("form")
 const discount = .25
 const billAmountMonthlyArray = [
     [8, "10K"],
@@ -21,18 +20,19 @@ const billAmountMonthlyArray = [
 // switch from monthly billing to yearly billing button 
 switchBtn.addEventListener("click", () =>{
     let amount = billAmountMonthlyArray[rangeInput.value][0]
-    if(!switchBtncCircle.classList.contains("transfrom")){
-        switchBtncCircle.classList.add("transfrom")
-        yearlyRadio.checked = true
-        monthlyRadio.checked = false
-        way.textContent = "yearly"
+    if(monthlyRadio.hasAttribute("checked")){
         billAmount.textContent = `$${(amount - amount * discount).toFixed(2)}`
+        switchBtncCircle.classList.add("transfrom")
+        yearlyRadio.setAttribute("checked", "")
+        monthlyRadio.removeAttribute("checked")
+        way.textContent = "yearly"
+       
     }else{
-        switchBtncCircle.classList.remove("transfrom")
-        yearlyRadio.checked = false
-        monthlyRadio.checked = true
-        way.textContent = "monthly"
         billAmount.textContent = `$${amount}.00` 
+        switchBtncCircle.classList.remove("transfrom")
+        monthlyRadio.setAttribute("checked", "")
+        yearlyRadio.removeAttribute("checked")
+        way.textContent = "monthly"
     } 
     fillLower(rangeInput.value)  
 })
@@ -44,10 +44,8 @@ rangeInput.addEventListener("input", (e) => {
 
 function handleInputValue(e){
     let amount = billAmountMonthlyArray[e.target.value][0]
-    let name = e.target.name
-    
     pageviewsNumber.textContent = billAmountMonthlyArray[e.target.value][1]
-    if(name === "monthly_billing"){  
+    if(monthlyRadio.hasAttribute("checked")){  
         billAmount.textContent = `$${amount.toFixed(2)}`
 
     }else{
