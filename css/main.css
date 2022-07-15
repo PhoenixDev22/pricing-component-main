@@ -688,6 +688,9 @@ input[type=radio] {
   .description {
     max-width: unset;
   }
+  .component__header{
+    padding: 5.0625rem 0 3.5rem;
+  }
   .component__form {
     max-width: 540px;
   }
